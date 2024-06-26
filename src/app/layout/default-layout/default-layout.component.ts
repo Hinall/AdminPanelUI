@@ -17,6 +17,8 @@ import {
 
 import { DefaultFooterComponent, DefaultHeaderComponent } from './';
 import { navItems } from './_nav';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { UserService } from 'src/services/user.service';
 
 function isOverflown(element: HTMLElement) {
   return (
@@ -31,6 +33,8 @@ function isOverflown(element: HTMLElement) {
   styleUrls: ['./default-layout.component.scss'],
   standalone: true,
   imports: [
+   
+    HttpClientModule,
     SidebarComponent,
     SidebarHeaderComponent,
     SidebarBrandComponent,
@@ -46,7 +50,8 @@ function isOverflown(element: HTMLElement) {
     ContainerComponent,
     RouterOutlet,
     DefaultFooterComponent
-  ]
+  ],
+  providers:[UserService]
 })
 export class DefaultLayoutComponent {
   public navItems = navItems;

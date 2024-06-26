@@ -4,33 +4,33 @@
       <c-col lg="7" md="9" xl="6">
         <c-card class="mx-4">
           <c-card-body class="p-4">
-            <form cForm>
+            <form cForm  [formGroup]="registerForm" (ngSubmit)="onSubmit()" >
               <h1>Register</h1>
               <p class="text-body-secondary">Create your account</p>
               <c-input-group class="mb-3">
                 <span cInputGroupText>
                   <svg cIcon name="cilUser"></svg>
                 </span>
-                <input autoComplete="name" cFormControl placeholder="Username" />
+                <input  class="form-control" formControlName="username"  autoComplete="name" cFormControl placeholder="Username" />
               </c-input-group>
               <c-input-group class="mb-3">
                 <span cInputGroupText>&#64;</span>
-                <input autoComplete="email" cFormControl placeholder="Email" />
+                <input  class="form-control" formControlName="email"  autoComplete="email" cFormControl placeholder="Email" />
               </c-input-group>
               <c-input-group class="mb-3">
                 <span cInputGroupText>
                   <svg cIcon name="cilLockLocked"></svg>
                 </span>
-                <input autoComplete="new-password" cFormControl placeholder="Password" type="password" />
+                <input  class="form-control" formControlName="password"  autoComplete="new-password" cFormControl placeholder="Password" type="password" />
               </c-input-group>
               <c-input-group class="mb-4">
                 <span cInputGroupText>
                   <svg cIcon name="cilLockLocked"></svg>
                 </span>
-                <input autoComplete="new-password" cFormControl placeholder="Repeat password" type="password" />
+                <input  class="form-control" formControlName="role"  autoComplete="new-password" cFormControl placeholder="role"  />
               </c-input-group>
               <div class="d-grid">
-                <button cButton color="success">Create Account</button>
+                <button cButton type="submit"color="success">Create Account</button>
               </div>
             </form>
           </c-card-body>

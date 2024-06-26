@@ -5,20 +5,20 @@
         <c-card-group>
           <c-card class="p-4">
             <c-card-body>
-              <form cForm>
+              <form cForm [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <h1>Login</h1>
                 <p class="text-body-secondary">Sign In to your account</p>
                 <c-input-group class="mb-3">
                   <span cInputGroupText>
                     <svg cIcon name="cilUser"></svg>
                   </span>
-                  <input autoComplete="username" cFormControl placeholder="Username" />
+                  <input  class="form-control" formControlName="username" autoComplete="username" cFormControl placeholder="Username" />
                 </c-input-group>
                 <c-input-group class="mb-4">
                   <span cInputGroupText>
                     <svg cIcon name="cilLockLocked"></svg>
                   </span>
-                  <input
+                  <input  class="form-control" formControlName="password"
                     autoComplete="current-password"
                     cFormControl
                     placeholder="Password"
@@ -27,7 +27,7 @@
                 </c-input-group>
                 <c-row>
                   <c-col xs="6">
-                    <button cButton class="px-4" color="primary">
+                    <button type="submit" cButton class="px-4" color="primary">
                       Login
                     </button>
                   </c-col>
@@ -45,10 +45,9 @@
               <div>
                 <h2>Sign up</h2>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua.
+                  create new account
                 </p>
-                <button [active]="true" cButton class="mt-3" color="primary" routerLink="/register">
+                <button  [active]="true" cButton class="mt-3" color="primary" >
                   Register Now!
                 </button>
               </div>

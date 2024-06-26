@@ -1,5 +1,9 @@
 import { Routes } from '@angular/router';
 import { DefaultLayoutComponent } from './layout';
+import { HttpClientModule,HttpClient } from '@angular/common/http';
+// import { authGuard } from '../auth/auth.guard';
+ import { AuthorizeService } from '../services/authorize.service';
+
 
 export const routes: Routes = [
   {
@@ -10,13 +14,21 @@ export const routes: Routes = [
   {
     path: '',
     component: DefaultLayoutComponent,
+    canActivate: [AuthorizeService],
     data: {
       title: 'Home'
     },
     children: [
       {
         path: 'dashboard',
-        loadChildren: () => import('./views/dashboard/routes').then((m) => m.routes)
+        loadChildren: () => import('./views/dashboard/routes').then((m) => m.routes),
+        canActivate: [AuthorizeService],
+      },
+      {
+        path: 'user-management',
+        loadComponent: () => import('../components/user-management/user-management.component').then(m => m.UserManagementComponent),
+        canActivate: [AuthorizeService],
+        pathMatch: 'full'
       },
       {
         path: 'theme',
